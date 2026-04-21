@@ -6,7 +6,7 @@ export const PROJECTS: Project[] = [
     title: 'Classroom in Nepal',
     date: 'Jun 2022',
     subtext: 'Led the construction of a classroom in Gokarneshwar, Nepal — a humanitarian project combining engineering skills with on-the-ground impact.',
-    url: '#', // TODO: Add link or photo gallery when ready
+    url: '/documents/classroom/IMG_6021.jpg',
   },
   {
     title: 'Hotel Acquisition',
@@ -18,7 +18,7 @@ export const PROJECTS: Project[] = [
     title: 'TotalEnergies Sustainability',
     date: 'Mar 2025',
     subtext: 'In-depth analysis of TotalEnergies sustainability strategy, evaluating ESG commitments, carbon transition plans, and long-term energy mix repositioning.',
-    url: '#', // TODO: Add PDF link when ready
+    url: '/documents/totalenergies-study.pdf',
   },
   {
     title: 'Connected Greenhouse',

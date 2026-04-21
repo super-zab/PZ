@@ -10,8 +10,8 @@ export const FOOTER_LINKS: FooterLink[] = [
   {
     name: 'World Map',
     hoverText: 'Countries I\'ve visited',
-    icon: 'icons/github.svg', // TODO: Replace with a globe/map icon when available
-    url: '#', // TODO: Add world map project URL when ready
+    icon: 'icons/github.svg',
+    url: '/voyage/index.html',
   },
   {
     name: 'Instagram',
@@ -23,7 +23,7 @@ export const FOOTER_LINKS: FooterLink[] = [
     name: 'Resume',
     hoverText: 'Download',
     icon: 'icons/file.svg',
-    url: './Resume-PZ.pdf',
+    url: '/documents/cv-paul-zabotto.pdf',
   },
   {
     name: 'Dreams',
