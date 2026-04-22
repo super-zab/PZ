@@ -57,7 +57,7 @@ const TextWindow = () => {
           {...fontProps}
           scale={[1, -1, 1]}
           fontSize={0.8}
-          position={[0, 0, -0.6]}
+          position={[0, 0, -0.7]}
           rotation={[0, -Math.PI / 2,  -Math.PI / 2]}>
           ALL-STAR ATHLETE
         </Text>

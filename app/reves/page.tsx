@@ -3,11 +3,11 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Cinzel, Cormorant_Garamond } from 'next/font/google';
-import { DREAMS, CONSTELLATIONS, type Dream } from '../data/dreams';
+import { type Dream, type Constellation } from '../data/dreams';
 
 const cinzel = Cinzel({
   subsets: ['latin'],
-  weight: ['300', '400'],
+  weight: ['400'],
   variable: '--font-cinzel',
   display: 'swap',
 });
@@ -46,6 +46,25 @@ export default function CielDesReves() {
   // Stable ref so canvas click handler can open modal without stale closures
   const openModalRef = useRef(setModalDream);
   openModalRef.current = setModalDream;
+
+  // Dynamic data loaded from /dreams/dreams.json
+  const dreamsRef = useRef<Dream[]>([]);
+  const constsRef = useRef<Record<string, Constellation>>({});
+  const [stats, setStats] = useState({ total: 0, ongoing: 0, done: 0 });
+
+  useEffect(() => {
+    fetch('/dreams/dreams.json')
+      .then(r => r.json())
+      .then(data => {
+        dreamsRef.current = data.dreams ?? [];
+        constsRef.current = data.constellations ?? {};
+        setStats({
+          total: dreamsRef.current.length,
+          ongoing: dreamsRef.current.filter((d: Dream) => d.status === 'ongoing').length,
+          done: dreamsRef.current.filter((d: Dream) => d.status === 'done').length,
+        });
+      });
+  }, []);
 
   // Close modal on Escape
   useEffect(() => {
@@ -131,7 +150,7 @@ export default function CielDesReves() {
 
     // ── Events ────────────────────────────────────────────────
     function findHovered(cx: number, cy: number): Dream | null {
-      for (const d of DREAMS) {
+      for (const d of dreamsRef.current) {
         const hitR = d.size * (d.status === 'done' ? 1.5 : 1.0) + 14;
         if (Math.hypot(cx - d.x * W, cy - d.y * H) < hitR) return d;
       }
@@ -273,13 +292,13 @@ export default function CielDesReves() {
 
     function drawConstellationLines() {
       const groups: Record<string, Dream[]> = {};
-      for (const d of DREAMS) {
+      for (const d of dreamsRef.current) {
         if (!groups[d.constellation]) groups[d.constellation] = [];
         groups[d.constellation].push(d);
       }
 
       for (const [cid, stars] of Object.entries(groups)) {
-        const cdef = CONSTELLATIONS[cid];
+        const cdef = constsRef.current[cid];
         if (!cdef) continue;
         const [cr, cg, cb] = cdef.color;
 
@@ -450,7 +469,7 @@ export default function CielDesReves() {
       ctx.translate(px, py);
       drawConstellationLines();
 
-      for (const d of DREAMS) {
+      for (const d of dreamsRef.current) {
         const isHov = hoveredDream === d;
         const sc    = starColor(d.status);
         const tw    = 0.6 + 0.4 * (0.5 + 0.5 * Math.sin(t * 0.018 + d.id * 2.1));
@@ -480,14 +499,14 @@ export default function CielDesReves() {
   }, []);
 
   // ── Modal derived values ───────────────────────────────────────
-  const cColor     = modalDream ? CONSTELLATIONS[modalDream.constellation]?.color : null;
+  const cColor     = modalDream ? constsRef.current[modalDream.constellation]?.color : null;
   const cColorStr  = cColor
     ? `rgba(${cColor[0]},${cColor[1]},${cColor[2]},0.72)`
     : 'rgba(158,184,255,0.72)';
 
-  const totalDreams   = DREAMS.length;
-  const ongoingDreams = DREAMS.filter(d => d.status === 'ongoing').length;
-  const doneDreams    = DREAMS.filter(d => d.status === 'done').length;
+  const totalDreams   = stats.total;
+  const ongoingDreams = stats.ongoing;
+  const doneDreams    = stats.done;
 
   // ── Render ─────────────────────────────────────────────────────
   return (
