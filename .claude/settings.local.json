@@ -6,7 +6,8 @@
       "Bash(cp \"c:\\\\Users\\\\paulz\\\\Desktop\\\\Introduction to Full-stack development\\\\Projet\\\\Paul Zabotto Website\\\\hobbies\\\\voyage\\\\style.css\" \"c:\\\\Users\\\\paulz\\\\Desktop\\\\Portfolio Paul Zabotto\\\\public\\\\voyage\\\\style.css\")",
       "Bash(cp \"c:\\\\Users\\\\paulz\\\\Desktop\\\\Introduction to Full-stack development\\\\Projet\\\\Paul Zabotto Website\\\\hobbies\\\\voyage\\\\data\\\\countries.json\" \"c:\\\\Users\\\\paulz\\\\Desktop\\\\Portfolio Paul Zabotto\\\\public\\\\voyage\\\\data\\\\countries.json\")",
       "Bash(cp \"c:\\\\Users\\\\paulz\\\\Desktop\\\\Introduction to Full-stack development\\\\Projet\\\\Paul Zabotto Website\\\\hobbies\\\\voyage\\\\sync_photos.py\" \"c:\\\\Users\\\\paulz\\\\Desktop\\\\Portfolio Paul Zabotto\\\\public\\\\voyage\\\\sync_photos.py\")",
-      "Bash(powershell -command \"\\(Get-ChildItem 'C:\\\\Users\\\\paulz\\\\Desktop\\\\Introduction to Full-stack development\\\\Projet\\\\Paul Zabotto Website\\\\hobbies\\\\voyage\\\\data\\\\photos' -Recurse | Measure-Object -Property Length -Sum\\).Sum / 1MB\")"
+      "Bash(powershell -command \"\\(Get-ChildItem 'C:\\\\Users\\\\paulz\\\\Desktop\\\\Introduction to Full-stack development\\\\Projet\\\\Paul Zabotto Website\\\\hobbies\\\\voyage\\\\data\\\\photos' -Recurse | Measure-Object -Property Length -Sum\\).Sum / 1MB\")",
+      "Bash(npx tsc *)"
     ]
   }
 }
