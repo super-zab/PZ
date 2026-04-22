@@ -75,7 +75,7 @@ export default function CielDesReves() {
 
   // ── Canvas setup ──────────────────────────────────────────────
   useEffect(() => {
-    const canvas = canvasRef.current;
+    const canvas = canvasRef.current as HTMLCanvasElement;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
@@ -115,7 +115,6 @@ export default function CielDesReves() {
     }
 
     function resize() {
-      if (!canvas) return;
       dpr = window.devicePixelRatio || 1;
       W = window.innerWidth;
       H = window.innerHeight;
