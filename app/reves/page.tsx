@@ -115,6 +115,7 @@ export default function CielDesReves() {
     }
 
     function resize() {
+      if (!canvas) return;
       dpr = window.devicePixelRatio || 1;
       W = window.innerWidth;
       H = window.innerHeight;
