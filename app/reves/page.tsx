@@ -75,10 +75,8 @@ export default function CielDesReves() {
 
   // ── Canvas setup ──────────────────────────────────────────────
   useEffect(() => {
-    const canvas = canvasRef.current as HTMLCanvasElement;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
-    if (!ctx) return;
+    const canvas = canvasRef.current!;
+    const ctx = canvas.getContext('2d')!;
 
     let W = 0, H = 0, dpr = 1;
     let t = 0;
