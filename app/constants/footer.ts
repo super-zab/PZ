@@ -10,7 +10,7 @@ export const FOOTER_LINKS: FooterLink[] = [
   {
     name: 'World Map',
     hoverText: 'Countries I\'ve visited',
-    icon: 'icons/github.svg',
+    icon: 'icons/globe.svg',
     url: '/voyage/index.html',
   },
   {
@@ -22,13 +22,13 @@ export const FOOTER_LINKS: FooterLink[] = [
   {
     name: 'Resume',
     hoverText: 'Download',
-    icon: 'icons/file.svg',
+    icon: 'icons/user.svg',
     url: '/documents/cv-paul-zabotto.pdf',
   },
   {
     name: 'Dreams',
     hoverText: 'Mon Ciel des Rêves',
-    icon: 'icons/star.svg',
+    icon: 'icons/cloud.svg',
     url: '/reves',
   },
 ];
